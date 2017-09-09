@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>closures_001</title>
+</head>
+<body>
+<script>
+
+    "use strict";
+
+    //What are function closures?
+
+    function sayHello(name){
+        var text = 'Hello ' + name;
+        return function(){
+            console.log(text);
+        }
+    };
+
+    sayHello("Mimi")();
+
+    var helloSalim = sayHello("Salim");
+
+    helloSalim();
+</script>
+
+</body>
+</html>

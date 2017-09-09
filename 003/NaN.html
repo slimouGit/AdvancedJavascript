@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NaN</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        //What is the type of NaN
+
+        console.log(typeof(NaN));
+
+        console.log(isNaN(NaN));    //true
+
+        console.log(isNaN(1));      //false
+
+        console.log(isNaN("1"));    //false
+
+        console.log(isNaN("A"));    //true
+
+        console.log(Number("A"));   //NaN
+
+        console.log(isNaN());       //true
+    </script>
+
+</body>
+</html>

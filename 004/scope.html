@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scope</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        //What are the different scopes in javascript?
+
+        var mimi = 1;
+
+        window.moo = 2;
+
+        function foo(){
+            var too = 1;
+            console.log(too);
+        };
+        //console.log(too);   //error
+        foo();
+
+        //-------------------------------------------------
+
+        for(var i=0;i<5;i++){
+            var j = 5;
+        }
+        console.log(j);
+
+        //------------------------------------------------
+
+        for(let k=0;k<5;k++){
+            let l = 5;
+        }
+        console.log(l); //error
+
+        //------------------------------------------------
+    </script>
+
+</body>
+</html>

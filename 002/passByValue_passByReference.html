@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>passByValue_passByReference</title>
+</head>
+<body>
+    <script>
+        //primitives are pass by value
+        var a = 1;
+        function foo(a){
+            a = 2;
+        }
+        foo(a);//pass by value
+        console.log(a);//a is 1
+
+        //object are pass by reference
+        var obj = {};
+        function foo(obj){
+            obj.moo = false;
+        }
+        foo(obj);//pass by reference
+        console.log(obj);//obj is false
+
+        var b = {'moo':'too'};
+        function foo(b){
+            b.too = 'moo';
+        }
+        foo(b);//pass by reference
+        console.log(b);//b is {moo: "too", too: "moo"}
+    </script>
+</body>
+</html>

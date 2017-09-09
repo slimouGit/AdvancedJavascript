@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scopeChain</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        //What is the scope chain?
+
+        var myVar = 1;              //third lokk after myVar => success!!!
+
+        function goo(){
+                                    //second look after myVar   (outer scope)
+            function foo(){
+                console.log(myVar); //first look after myVar    (inner scope)
+            }
+
+            foo();
+        }
+
+        goo();
+
+    </script>
+</body>
+</html>
