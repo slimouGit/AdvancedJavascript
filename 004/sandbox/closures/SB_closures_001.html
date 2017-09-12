@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>closures_001</title>
+</head>
+<body>
+    <script>
+        function init(){
+            let localVar = "Hello World";   // localVar ist eine von init erzeugte lokale Variable
+            function printClosure(){        // printClosure() ist die innere, umschlossene Funktion, die 'Closure'
+                document.write(localVar);   // hier wird die in der umschließenden Eltern-Funktion deklarierte Variable benutzt
+            }
+            printClosure();
+        }
+        init();
+    </script>
+</body>
+</html>
