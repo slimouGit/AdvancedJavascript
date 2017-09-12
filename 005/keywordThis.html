@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+    <script>
+        console.log(this);
+
+        this.mimi = 1;
+
+        console.log(this.mimi);
+        console.log(window.mimi);
+        console.log(mimi);
+
+        (function checkThis(){
+            console.log(this);
+        })();
+
+        let mimiLieb = {
+            name: 'Mimi',
+            checkMimiLieb: function(){
+                console.log(this);
+            }
+        };
+        mimiLieb.checkMimiLieb();
+
+        let func = mimiLieb.checkMimiLieb;
+        func();
+
+        console.log("----------------------------------------------------");
+
+        let thisChain = {
+            checkOuter: function(){
+                console.log(this);
+                function checkInner(){
+                    console.log(this);
+                }
+                checkInner();
+            }
+        };
+
+        thisChain.checkOuter();
+
+        console.log("----------------------------------------------------");
+
+        let thisChain_2 = {
+            checkOuter: function(){
+                let _this = this;
+                console.log(_this);
+                function checkInner(){
+                    console.log(_this);
+                    _this.moo = 1;
+                }
+                checkInner();
+                console.log(_this.moo);
+                console.log(window.moo);
+            }
+        };
+
+        thisChain_2.checkOuter();
+
+    </script>
+</body>
+</html>
