@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>keyWordApply</title>
+</head>
+<body>
+    <script>
+        function a(b,c,d){
+            console.log(this);
+            console.log(b);
+            console.log(c);
+            console.log(d);
+        }
+        a.apply(1, [2,3,4]);
+
+        console.log("----------------------------");
+
+        function sum(){
+            var total = 0;
+            for(var i = 0; i<arguments.length;i++){
+                total+=arguments[i];
+            }
+            return total;
+        }
+        var x = sum.call(null,1,2,3);
+        console.log(x);
+
+        var numberArray = [2,58,41,3,25,7];
+
+        var y = sum.apply(null, numberArray);
+        console.log(y);
+
+    </script>
+</body>
+</html>

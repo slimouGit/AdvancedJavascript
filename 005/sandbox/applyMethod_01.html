@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>applyMethod</title>
+</head>
+<body>
+<p id="demo"></p>
+<script>
+    "use strict";
+    var person = {
+        firstName:"John",
+        lastName: "Doe",
+        fullName: function() {
+            return this.firstName + " " + this.lastName;
+        }
+    }
+    var myObject = {
+        firstName:"Mary",
+        lastName: "Doe",
+    }
+    var x = person.fullName.apply(myObject);
+    document.getElementById("demo").innerHTML = x;
+    </script>
+    </body>
+</html>

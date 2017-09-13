@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>applyMethod</title>
+</head>
+<body>
+<p id="demo"></p>
+<script>
+    "use strict";
+    let arrayOfNumbers = [8,1,7,5,6];
+    let x = Math.max.apply(null, arrayOfNumbers);
+    document.getElementById("demo").innerHTML = x;
+    </script>
+    </body>
+</html>

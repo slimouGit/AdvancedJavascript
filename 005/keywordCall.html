@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>keywordCall</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        function a(param1, param2){
+            console.log(this);
+        }
+        a.call({});
+
+        var mimi = {
+            checkThis: function(){
+                function checkInner(){
+                    console.log(this);
+                };
+                checkInner.call(this);
+            }
+        }
+        mimi.checkThis();
+
+        console.log("----------------------------");
+
+        function moo(b,c,d){
+            console.log(this);
+            console.log(b);
+            console.log(c);
+            console.log(d);
+        }
+        moo.call(1,2,3,4);
+    </script>
+</body>
+</html>
