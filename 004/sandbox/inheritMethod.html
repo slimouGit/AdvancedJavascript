@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>inherit Method</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        function Human(first_name, last_name){
+            this.first_name = first_name;
+            this.last_name = last_name;
+        }
+
+        Human.prototype.printName = function(){
+            return this.first_name + " " + this.last_name;
+        };
+
+        function Student(first_name, last_name, course){
+            Human.call(this, first_name, last_name);
+            this.course = course;
+        }
+
+        //make the function in Human available for Student
+        Student.prototype = Object.create(Human.prototype);
+
+        Student.prototype.printNameAndCourse = function(){
+            return this.first_name + " " + this.last_name + " " + this.course;
+        };
+
+        let mimi1 = new Human("Mimi", "Illmi");
+        let mimi2 = new Student("Mimi", "Illmi", "Computer Science");
+
+        console.log(mimi1.printName());
+
+        console.log(mimi2.printName());
+
+        console.log(mimi2.printNameAndCourse());
+
+
+    </script>
+</body>
+</html>

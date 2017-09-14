@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pseudo private</title>
+</head>
+<body>
+    <script>
+        function Device(kind) {
+            this.kind =  kind;
+            this.printKind = function () {
+                console.log(kind);
+                console.log(this.kind);
+            }
+        }
+
+        var product = new Device("music player");
+        product.kind = "radio";
+        product.printKind();
+    </script>
+</body>
+</html>
