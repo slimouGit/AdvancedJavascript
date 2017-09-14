@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vecicle pool with ES5</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    //--------------------------------------------------------------
+
+    //VEHICLE
+
+    function Vehicle(name, horsepower){
+        this.name = name;
+        this.horsepower = horsepower;
+    }
+
+    Vehicle.prototype.printVehicle = function(){
+        return this.name + " " + this.horsepower;
+    };
+
+    //tune vehicle
+    Vehicle.prototype.tuneVehicle = function(addHP){
+        this.addHP = addHP;
+        return this.horsepower+=this.addHP;
+    };
+
+    //--------------------------------------------------------------
+
+    //CAR
+
+    function Car(name, horsepower, seats){
+        Vehicle.call(this, name, horsepower);
+        this.seats = seats;
+    }
+
+    //make the function in Vehicle available for Car
+    Car.prototype = Object.create(Vehicle.prototype);
+
+    Car.prototype.printCar = function(){
+        return this.name + " " + this.horsepower+ " " + this.seats;
+    };
+    //--------------------------------------------------------------
+
+    //MOTORCYCLE
+
+    function Motorcycle(name, horsepower, seats, kind){
+        Vehicle.call(this, name, horsepower, seats, kind);
+        this.seats = 1;
+        this.kind = kind;
+    }
+    Motorcycle.prototype = Object.create(Vehicle.prototype);
+
+    Motorcycle.prototype.printBike = function(){
+        return this.name + " " + this.horsepower+ " " + this.seats + " " + this.kind;
+    };
+
+    //--------------------------------------------------------------
+
+    //INITIALIZE
+
+    var porsche = new Vehicle("911", 412);
+    console.log(porsche.printVehicle());
+
+    var gKlasse = new Car("G-Klasse", 360, 5);
+    console.log(gKlasse.printVehicle());
+    console.log(gKlasse.printCar());
+    gKlasse.tuneVehicle(100);
+    console.log(gKlasse.printCar());
+
+    var suzuki = new Motorcycle("Suzuki", 300, null, "Ralley");
+    console.log(suzuki);
+    suzuki.tuneVehicle(50);
+    console.log(suzuki);
+    console.log(suzuki.printBike());
+
+    //--------------------------------------------------------------
+
+</script>
+
+</body>
+</html>

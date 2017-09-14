@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vecicle pool with ES5</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    //--------------------------------------------------------------
+
+    class Vehicle{
+        constructor(vehicleName, vehicleSpeed, vehicleHP){
+            this.vehicleName = vehicleName;
+            this.vehicleSpeed = vehicleSpeed;
+            this.vehicleHP = vehicleHP;
+        }
+
+        driveVehicle(){
+            if(this.vehicleSpeed == 0){
+                return this.vehicleName + " steht im Fuhrpark";
+            }
+            else {
+                return this.vehicleName + " faehrt mit " + this.vehicleSpeed + " km/h";
+            }
+        }
+
+        accelerateVehicle(vehicleAcceleration){
+            this.vehicleAcceleration = vehicleAcceleration;
+            return this.vehicleSpeed+=this.vehicleAcceleration;
+        }
+    }
+
+    //--------------------------------------------------------------
+
+    class Car extends Vehicle{
+        constructor(vehicleName, vehicleSpeed, vehicleHP, seats){
+            super(vehicleName, vehicleSpeed, vehicleHP);
+            this.seats = seats;
+        }
+
+        accelerateVehicle(vehicleAcceleration){
+            this.vehicleAcceleration = vehicleAcceleration;
+            return this.vehicleSpeed+=this.vehicleAcceleration*3;
+        }
+
+        accelerateTwice(){
+            super.accelerateVehicle(20);    //points to method in Vehicle class
+            this.accelerateVehicle(20);     //points to method in Car class
+        }
+
+        startEngine(){
+
+        }
+    }
+
+    //--------------------------------------------------------------
+
+    let porsche = new Vehicle("Porsche", 0, 250);
+    console.log(porsche.driveVehicle());
+    porsche.accelerateVehicle(50);
+    console.log(porsche.driveVehicle());
+    //check prototype
+    console.log(porsche.__proto__ === Vehicle.prototype);
+
+    //--------------------------------------------------------------
+
+    let gKlasse = new Car("G-Klasse",0,360,5);
+    console.log(gKlasse);
+    console.log(gKlasse.driveVehicle());
+    gKlasse.accelerateTwice();
+    console.log(gKlasse.driveVehicle());
+    //check prototype
+    console.log(gKlasse.__proto__ === Car.prototype);
+
+</script>
+
+</body>
+</html>
