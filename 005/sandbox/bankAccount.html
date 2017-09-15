@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bankAccount</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        //--------------------------------------------------------------
+
+        class Account {
+            constructor(accountNumber, accountHolder_firstName, accountHolder_lastName, accountAmount){
+                this.accountNumber = accountNumber;
+                this.accountHolder_firstName = accountHolder_firstName;
+                this.accountHolder_lastName = accountHolder_lastName;
+                this._accountAmount = accountAmount;
+            }
+
+            printAccount(){
+                return this.accountNumber + ": " + this.accountHolder_lastName + ", " + this.accountHolder_firstName + " Amount: " + this._accountAmount + " Euro";
+            }
+
+            get getAmount(){
+                return this._accountAmount;
+            }
+
+            set setAmount(value){
+                if(value<this._accountAmount){
+                    this._accountAmount = this._accountAmount;
+                }else {
+                    this._accountAmount = value;
+                }
+            }
+
+            depositMoney(value){
+               console.log(this.accountNumber + " + " + value + " Euro");
+               return  this._accountAmount+=value;
+            }
+
+            windrawMoney(value){
+                if(value<this._accountAmount) {
+                    console.log(this.accountNumber + " - " + value + " Euro");
+                    return this._accountAmount -= value;
+                }
+            }
+        };
+
+        //--------------------------------------------------------------
+
+        let account_1 = new Account("158879", "Michaela", "Illmer", 75000);
+        console.log(account_1.printAccount());
+        console.log(account_1.getAmount);
+        account_1.setAmount = 8000;
+        account_1.accountAmount = 15;//without any effect
+        console.log(account_1.printAccount());
+        account_1.depositMoney(800);
+        console.log(account_1.printAccount());
+        account_1.windrawMoney(800);
+        console.log(account_1.printAccount());
+
+        //--------------------------------------------------------------
+
+    </script>
+</body>
+</html>
